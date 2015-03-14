@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>. . : : || I S S U E || : : . .</title>
+<link href="<?php echo Conectar::ruta();?>css/estilos.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="<?php echo Conectar::ruta();?>css/tooltipster.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo Conectar::ruta();?>css/style2.css" />
+<script language="javascript" type="text/javascript" src="<?php echo Conectar::ruta();?>js/md5.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo Conectar::ruta();?>js/funciones.js"></script>
+<script type="text/javascript" src="<?php echo Conectar::ruta();?>js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="<?php echo Conectar::ruta();?>js/jquery.tooltipster.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.tooltip').tooltipster();
+    });
+</script>
+</head>
+<body onload="document.form.reset();document.form.nombre.focus();">
+<center>
+<div id="principal">
+    <div id="header">
+        <?php include("header.phtml"); ?>
+    </div>
+    <div id="contenedor_medio">
+        <?php include("menu_principal.phtml"); ?>
+        <form name="form" action="" method="post">
+	    <?php
+	    if(isset($_GET["m"]))
+	    {
+		    switch($_GET["m"])
+		    {
+			case '3';
+			?>
+	        	<h2 style="color:green"> Usted fue registrado correctamente </h2>
+	        <?php
+			break;
+
+			case '4';
+			?>
+	        	<h2 style="color:red"> Login existente, intente con otro login por favor </h2>
+	        <?php
+			break;
+    		}
+    	}
+    	?>
+        <table align="center" width="400">
+        <br>
+        <tr>
+        <td valign="top" align="center" colspan="2" width="400">
+        <h2><strong>Registrarse en I S S U E</strong></h2>
+        <hr />
+        </td>
+        </tr>
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="middle" align="right" width="200">
+        Nombre Completo:
+        </td>
+        <td valign="middle" align="left" width="200">
+        <script>
+			function soloLetras(e){
+				key = e.keyCode || e.which;
+				tecla = String.fromCharCode(key).toLowerCase();
+				letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+				especiales = [8,9,37,39,46];
+
+				tecla_especial = false
+				for(var i in especiales){
+					if(key == especiales[i]){
+				tecla_especial = true;
+				break;
+						}
+				}
+				if(letras.indexOf(tecla)==-1 && !tecla_especial)
+					return false;
+			}
+		</script>
+        <input type="text" name="nombre" onkeypress="return soloLetras(event)" />
+        </td>
+        </tr>
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="middle" align="right" width="200">
+        Login:
+        </td>
+        <td valign="middle" align="left" width="200">
+        <input type="text" name="user" />
+        </td>
+        </tr>
+
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="middle" align="right" width="200">
+        Password:
+        </td>
+        <td valign="middle" align="left" width="200">
+        <input type="password" name="pass" />
+        </td>
+        </tr>
+
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="middle" align="right" width="200">
+        Repetir Password:
+        </td>
+        <td valign="middle" align="left" width="200">
+        <input type="password" name="pass_1" />
+        </td>
+        </tr>
+
+        <tr>
+        <td valign="top" align="center" colspan="2" width="400">
+        <hr />
+        <input type="hidden" name="grabar" value="si" />
+        <input name="Botón" type="button" title="Registrarse" onclick="registro();" value="Registrarse" />
+        </td>
+        </tr>
+        </table>
+        </form>
+    </div>  <!--Fin div contenedor_medio-->
+    <div id="reloj">
+        <?php include("reloj.phtml"); ?>
+    </div>
+    <div id="sidebar">
+        <?php include("social.phtml"); ?>
+    </div>
+    <div id="footer">
+    <hr />
+    &copy; Universidad Mayor de San Sim&oacuten - Entornos Virtuales  - <?php echo date("Y");?>
+    </div>
+</div> <!--Fin div Principal-->
+</center>
+</body>
+</html>

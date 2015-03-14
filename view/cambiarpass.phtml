@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>. . : : || I S S U E || : : . .</title>
+<link href="<?php echo Conectar::ruta();?>css/estilos.css" type="text/css" rel="stylesheet"/>
+<script language="javascript" type="text/javascript" src="<?php echo Conectar::ruta();?>js/md5.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo Conectar::ruta();?>js/funciones.js"></script>
+</head>
+<body onload="document.form.reset();document.form.pass_actual.focus();">
+<center>
+<div id="principal">
+    <div id="header">
+            <?php include("header.phtml"); ?>
+    </div>
+    <div id="contenedor_medio">
+        <?php
+        if(isset($_SESSION["privilegio"]) and $_SESSION["privilegio"] == 'usuario')
+        {
+            include("menu_usuario.phtml");
+        }
+        else if(isset($_SESSION["privilegio"]) and $_SESSION["privilegio"] == 'administrador')
+        {
+            include("menu_admin.phtml");
+        }
+        ?>
+        <br>
+        <h2>Cambiar Password</h2>
+        <?php
+        if(isset($_GET["m"]))
+        {
+            switch($_GET["m"])
+            {
+                case '3':
+                ?>
+                <h2 style="color:green;"> El password fue cambiado con éxito </h2>
+                <?php
+                break;
+
+                case '4':
+                ?>
+                <h2 style="color:red;"> Password actual incorrecto </h2>
+                <?php
+                break;
+            }
+        }
+        ?>
+        <form name="form" action="" method="post">
+        <table align="center" width="400">
+        <tr>
+        <td valign="middle" align="center" colspan="2" width="400">
+        <hr />
+        </td>
+        </tr>
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="middle" align="right" width="200">
+        <strong>Password Actual:</strong>
+        </td>
+        <td valign="middle" align="left" width="200">
+        <input type="password" name="pass_actual"/>
+        </td>
+        </tr>
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="middle" align="right" width="200">
+        <strong>Nuevo Password:</strong>
+        </td>
+        <td valign="middle" align="left" width="200">
+        <input type="password" name="pass"/>
+        </td>
+        </tr>
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="middle" align="right" width="200">
+        <strong>Repetir Nuevo Password:</strong>
+        </td>
+        <td valign="middle" align="left" width="200">
+        <input type="password" name="pass_1"/>
+        </td>
+        </tr>
+
+        <tr>
+        <td valign="middle" align="center" colspan="2" width="400">
+        <hr />
+        <input type="hidden" name="grabar" value="si" />
+        <input type="hidden" name="id_usuario" value="<?php echo $_GET["id_usuario"]?>" />
+        <input type="button" value="Cambiar Password" title="Cambiar Password" onclick="cambiar_pass();" />
+        </td>
+        </tr>
+        </table>
+        </form>
+        </div>  <!--Fin div contenedor_medio-->
+        <div id="reloj">
+            <?php include("reloj.phtml"); ?>
+        </div>
+        <div id="sidebar">
+            <?php include("perfilgral.phtml"); ?>
+        </div>
+        <div id="footer">
+        <hr />
+        &copy; Universidad Mayor de San Sim&oacuten - Entornos Virtuales  - <?php echo date("Y");?>
+        </div>
+</div> <!--Fin div Principal-->
+</center>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<?php
+require_once("config.php");
+if(isset($_SESSION["ses_id"]))
+{
+	if(!empty($_GET["accion"]))
+	{
+		$accion=$_GET["accion"];
+	}
+	else
+	{
+		$accion="index";
+	}
+	if(is_file("controller/".$accion."Controller.php"))
+	{
+		require_once("controller/".$accion."Controller.php");
+	}
+	else
+	{
+		require_once("controller/errorController.php");
+	}
+}
+else
+{
+	if(isset($_GET["accion"]) and $_GET["accion"] == "registro")
+	{
+		if(is_file("controller/registroController.php"))
+		{
+			require_once("controller/registroController.php");
+		}
+		else
+		{
+			require_once("controller/errorController.php");
+		}
+	}
+	else if(isset($_GET["accion"]) and $_GET["accion"] == "buscararchivo")
+	{
+		if(is_file("controller/buscararchivoController.php"))
+		{
+			require_once("controller/buscararchivoController.php");
+		}
+		else
+		{
+			require_once("controller/errorController.php");
+		}
+	}
+	else if(isset($_GET["accion"]) and $_GET["accion"] == "buscar")
+	{
+		if(is_file("controller/buscarController.php"))
+		{
+			require_once("controller/buscarController.php");
+		}
+		else
+		{
+			require_once("controller/errorController.php");
+		}
+	}
+	else if(isset($_GET["accion"]) and $_GET["accion"] == "juegos")
+	{
+		if(is_file("controller/juegosController.php"))
+		{
+			require_once("controller/juegosController.php");
+		}
+		else
+		{
+			require_once("controller/errorController.php");
+		}
+	}
+	else if(isset($_GET["accion"]) and $_GET["accion"] == "acercade")
+	{
+		if(is_file("controller/acercadeController.php"))
+		{
+			require_once("controller/acercadeController.php");
+		}
+		else
+		{
+			require_once("controller/errorController.php");
+		}
+	}
+	else
+	{
+		require_once("controller/indexController.php");
+	}
+}

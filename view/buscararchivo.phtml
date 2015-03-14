@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>. . : : || I S S U E || : : . .</title>
+<link href="<?php echo Conectar::ruta();?>css/estilos.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="<?php echo Conectar::ruta();?>css/tooltipster.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo Conectar::ruta();?>css/style2.css" />
+<script language="javascript" type="text/javascript" src="<?php echo Conectar::ruta();?>js/funciones.js"></script>
+<script type="text/javascript" src="<?php echo Conectar::ruta();?>js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="<?php echo Conectar::ruta();?>js/jquery.tooltipster.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.tooltip').tooltipster();
+    });
+</script>
+</head>
+<body>
+<center>
+<div id="principal">
+    <div id="header">
+            <?php include("header.phtml"); ?>
+    </div>
+    <div id="contenedor_medio">
+        <?php
+        if(isset($_SESSION["privilegio"]) and $_SESSION["privilegio"] == 'usuario')
+        {
+            include("menu_usuario.phtml");
+        }
+        else if(isset($_SESSION["privilegio"]) and $_SESSION["privilegio"] == 'administrador')
+        {
+            include("menu_admin.phtml");
+        }
+        else
+        {
+            include("menu_principal.phtml");
+        }
+        if(isset($_GET["m"]))
+        {
+            switch($_GET["m"])
+            {
+                case '1':
+                ?>
+                <h2 style="color:red;"> Usted no puede acceder al contenido del administrador </h2>
+                <?php
+                break;
+            }
+        }
+	    ?>
+	    <div id="titulo">
+		    <h2>Buscar Archivo</h2>
+	   </div>
+	   <div id="buscador">
+            <form name="buscador" method="post" action="<?php echo Conectar::ruta();?>?accion=buscar">
+            <strong>Título de archivo:</strong>
+            <input name="buscar" type="text" id="buscar" />
+            <a href="javascript:void(0)" title="Buscar" onclick="document.buscador.submit();"><img src="images/lupa.png" width="24" height="24" border="0" /></a>
+            </form>
+	    </div>
+      	<div id="contenedor_mis_archivos">
+        <div class="barra_deslizante_mis_archivos">
+        <?php
+        if(empty($archivo))
+        {
+        ?>
+            <h2 style="color:white;"> Ningun archivo encontrado </h2>
+        <?php
+        }
+            else
+        {
+        $inc=1;
+        $sql=0;
+        do {
+            ?>
+            <table align="center" width="805">
+            <tr style="background-color:#FF8040; color:#000000; font-weight:bold">
+            <td valign="middle" align="center" width="25" height="30"  >
+            Nro</td>
+
+            <td valign="middle" align="center" width="200" height="30" >
+            Titulo</td>
+
+            <td valign="middle" align="center" width="200" height="30" >
+            Autor</td>
+
+            <td valign="middle" align="center" width="100" height="30">
+            Categoria</td>
+
+            <td valign="middle" align="center" width="173" height="30">
+            Descripcion</td>
+
+            <td valign="middle" align="center" width="50" height="30">
+            Fecha Ingreso</td>
+
+            <td valign="middle" align="center" width="50" height="30">
+            Descarga</td>
+            </tr>
+            <?php
+            for($i=0;$i<count($archivo);$i++)
+            {
+            ?>
+                <tr id="<?php echo "tr_$i";?>" style="background-color:#f0f0f0" onMouseMove="tr('<?php echo "tr_$i";?>','#cccccc');" onMouseOut="tr('<?php echo "tr_$i";?>','#f0f0f0');">
+
+                <td valign="middle" align="center" height="30">
+                <?php
+                echo $inc++;
+                ?></td>
+
+                <td valign="middle" align="center" height="30">
+                <?php
+                echo $archivo[$i]["titulo"];
+                ?></td>
+
+                <td valign="middle" align="center" height="30">
+                <?php
+                echo $archivo[$i]["nombre_usuario"];
+                ?></td>
+
+                <td valign="middle" align="center" height="30">
+                <?php
+                echo $archivo[$i]["categoria"];
+                ?>
+                </td>
+
+                <td valign="middle" align="center" height="30">
+                <?php
+                echo $archivo[$i]["descripcion"];
+                ?>
+                </td>
+
+                <td valign="middle" align="center" height="30">
+                <?php
+                echo $archivo[$i]["fecha_archivo"];
+                ?>
+                </td>
+
+                <td valign="middle" align="center" height="30">
+                <a href="<?php echo Conectar::ruta()?>archivos/<?php echo $archivo[$i]["archivo"];?>" title="Abrir/Descargar <?php echo $archivo[$i]["titulo"];?>" target="_blank"><img src="<?php echo Conectar::ruta();?>images/descargar.png" border="0" width="32" height="32" /></a>
+                </td>
+                </tr>
+            <?php
+            }
+            ?>
+            </table>
+            <?php
+            } while($sql);
+        }
+        ?>
+        </div><!--Fin class barra_deslizante_mis_archivos-->
+        </div> <!--fin contenedor_mis_archivos-->
+    </div>  <!--Fin div contenedor_medio-->
+    <div id="reloj">
+        <?php include("reloj.phtml"); ?>
+    </div>
+    <div id="sidebar">
+        <?php
+        if(isset($_SESSION["ses_id"]))
+        {
+            include("perfilgral.phtml");
+        }
+        else
+        {
+            include("social.phtml");
+        }
+        ?>
+    </div>
+        <div id="footer">
+        <hr />
+        &copy; Universidad Mayor de San Sim&oacuten - Entornos Virtuales  - <?php echo date("Y");?>
+        </div>
+</div> <!--Fin div Principal-->
+</center>
+</body>
+</html>

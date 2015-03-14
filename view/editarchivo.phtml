@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>. . : : || I S S U E || : : . .</title>
+<link href="<?php echo Conectar::ruta();?>css/estilos.css" type="text/css" rel="stylesheet"/>
+</head>
+<body onload="document.form.reset();document.form.titulo.focus();">
+<center>
+<div id="principal">
+    <div id="header">
+        <?php include("header.phtml"); ?>
+    </div>
+    <div id="contenedor_medio">
+        <?php include("menu_usuario.phtml"); ?>
+        <br>
+        <h2>Editar Archivo</h2>
+        <form name="form" action="" method="post" enctype="multipart/form-data">
+        <?php
+        if(isset($_GET["m"]))
+        {
+            switch($_GET["m"])
+            {
+                case '1':
+                ?>
+                <h2 style="color:red;"> Rellene el campo título </h2>
+                <?php
+                break;
+
+                case '2':
+                ?>
+                <h2 style="color:green;"> Archivo fue editado con éxito </h2>
+                <?php
+                break;
+
+                case '3':
+                ?>
+                <h2 style="color:red;"> El t&iacutetulo del archivo ya existe. </h2>
+                <?php
+                break;
+            }
+        }
+        ?>
+
+        <table align="center" width="550">
+        <td valign="middle" align="center" colspan="2" width="400">
+        </td>
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="middle" align="right" width="200">
+        T&iacutetulo:
+        </td>
+        <td valign="middle" align="left" width="200">
+        <input type="text" name="titulo" size ="40" value="<?php echo $arch[0]["titulo"];?>"/>
+        </td>
+        </tr>
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="middle" align="right" width="200">
+        Categoria:
+        </td>
+        <td valign="middle" align="left" width="200"><label>
+        <select name="categoria" id="select">
+        <option value="<?php echo $arch[0]["categoria"];?>" ><?php echo $arch[0]["categoria"];?></option>
+            <option>Programaci&oacuten</option>
+            <option>Sistemas Expertos</option>
+            <option>Entornos Virutales</option>
+            <option>Evaluaci&oacuten de Sistemas </option>
+            <option>Otros</option>
+        </select>
+        </label>
+        </td>
+        </tr>
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="middle" align="right" width="200">
+        Descripci&oacuten:
+        </td>
+        <td valign="middle" align="left" width="200">
+        <div id="textarea">
+        <textarea name="descripcion" id="descripcion" cols="30" rows="3"><?php echo $arch[0]["descripcion"];?></textarea>
+        </td>
+        </tr>
+
+        <tr>
+        <td valign="middle" align="center" colspan="2" width="400">
+        <hr />
+        <input type="hidden" name="grabar" value="si" />
+        <input type="hidden" name="id_archivo" value="<?php echo $_GET["id_archivo"]?>" />
+        <input type="hidden" name="archivo_ruta" value="<?php echo Conectar::ruta()?>archivos/<?php echo $arch[0]["archivo"];?>" />
+        <input type="button" value="Editar Detalles" title="Editar Detalles" onclick="document.form.submit();" />
+        </td>
+        </tr>
+        </table>
+        </form>
+        </div>  <!--Fin div contenedor_medio-->
+        <div id="reloj">
+            <?php include("reloj.phtml"); ?>
+        </div>
+        <div id="sidebar">
+            <?php include("perfilgral.phtml"); ?>
+        </div>
+        <div id="footer">
+        <hr />
+        &copy; Universidad Mayor de San Sim&oacuten - Entornos Virtuales  - <?php echo date("Y");?>
+        </div>
+</div> <!--Fin div Principal-->
+</center>
+</body>
+</html>

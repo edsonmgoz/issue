@@ -1,0 +1,78 @@
+<?php
+if(isset($_GET["accion"]) and $_GET["accion"] == "index")
+{
+ ?>
+<div id='cssmenu'>
+<ul>
+    <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=index" title="Inicio"><span>Inicio</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos"><span>Juegos</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=acercade" title="Acerca de I S S U E"><span>Acerca de I S S U E</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and ($_GET["accion"] == "buscararchivo" or $_GET["accion"] == "buscar"))
+{
+?>
+<div id='cssmenu'>
+<ul>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=index" title="Inicio"><span>Inicio</span></a></li>
+    <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos"><span>Juegos</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=acercade" title="Acerca de I S S U E"><span>Acerca de I S S U E</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and $_GET["accion"] == "juegos")
+{
+?>
+<div id='cssmenu'>
+<ul>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=index" title="Inicio"><span>Inicio</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos"><span>Juegos</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=acercade" title="Acerca de I S S U E"><span>Acerca de I S S U E</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and $_GET["accion"] == "acercade")
+{
+?>
+<div id='cssmenu'>
+<ul>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=index" title="Inicio"><span>Inicio</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos"><span>Juegos</span></a></li>
+    <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=acercade" title="Acerca de I S S U E"><span>Acerca de I S S U E</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and $_GET["accion"] == "registro")
+{
+?>
+<div id='cssmenu'>
+<ul>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=index" title="Inicio"><span>Inicio</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos"><span>Juegos</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=acercade" title="Acerca de I S S U E"><span>Acerca de I S S U E</span></a></li>
+</ul>
+</div>
+<?php
+}
+else
+{
+?>
+<div id='cssmenu'>
+<ul>
+    <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=index" title="Inicio"><span>Inicio</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos"><span>Juegos</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=acercade" title="Acerca de I S S U E"><span>Acerca de I S S U E</span></a></li>
+</ul>
+</div>
+<?php } ?>

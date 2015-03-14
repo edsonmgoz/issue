@@ -1,0 +1,155 @@
+@charset "utf-8";
+
+body{
+  margin-left:0px;
+  margin-top:0px;
+  font-family:Arial;
+  background-image:url(../images/pergamino.png);
+}
+
+#principal{
+  width:1080px;
+  font-size:12px;
+}
+
+#header{
+  width:1080;
+  height:310px;
+  color:#000000;
+  font-family:Algerian;
+  float:left;
+  border: double;
+}
+
+#contenedor_mis_archivos{
+  width:820px;
+  border:double;
+  background-color:#333333;
+  float:none
+}
+
+
+.barra_deslizante_mis_archivos{
+  width:822px;
+  height:250px;
+  overflow:auto
+}
+
+#titulo{
+  width: 470px;
+  height: 55px;
+  background-color: #F5E4B6;
+  float: left;
+  text-align: right;
+}
+
+	#buscador{
+    width: 360px;
+    height: 55px;
+    background-color: #F5E4B6;
+    float: left;
+    text-align: right;
+  }
+
+#menu{
+  width:830px;
+  height:50px;
+  float:left;
+  border:double;
+  background-color: #FF8040;
+  padding: 0;
+}
+
+#contenedor_medio{
+  width:830px;
+  height:390px;
+  float:left;
+  border:double;
+}
+
+#contenedor_juegos{
+  width:830px;
+  height:1800px;
+  float:left;
+  border:double;
+}
+
+#juegos{
+  width: 830px;
+  height: 450px;
+  float: left;
+}
+
+#sidebar{
+  width: 238px;
+  height: 316px;
+  float: left;
+  border:double;
+  text-align: center;
+  font-size: 16px;
+}
+
+#reloj{
+  width: 238px;
+  height: 68px;
+  float: left;
+  border: double;
+}
+
+#footer{
+  width:1080px;
+  height:20px;
+  float:left;
+  text-align:center;
+}
+
+#intro_usuario{
+  width: 830px;
+  height: 275px;
+  float: left;
+}
+
+#cssmenu ul {
+  list-style-type: none;
+  width: 830px;
+  position: relative;
+  display: block;
+  height: 33px;
+  font-size: 16px;
+  background: url(../images/bg.png) repeat-x top left;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  border: 1px solid #000;
+  margin: 0;
+  padding: 0;
+}
+#cssmenu li {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+#cssmenu li a {
+  float: left;
+  color: #A79787;
+  text-decoration: none;
+  height: 24px;
+  padding: 9px 15px 0;
+  font-weight: normal;
+}
+#cssmenu li a:hover,
+#cssmenu .active {
+  color: #fff;
+  background: url(../images/bg.png) repeat-x top left;
+  text-decoration: none;
+}
+#cssmenu .active a {
+  color: #fff;
+  font-weight: 700;
+}
+#cssmenu ul {
+  background-color: #DC4900;
+}
+#cssmenu li a:hover,
+#cssmenu li.active {
+  background-color: #F46D00;
+}

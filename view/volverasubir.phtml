@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>. . : : || I S S U E || : : . .</title>
+<link href="<?php echo Conectar::ruta();?>css/estilos.css" type="text/css" rel="stylesheet"/>
+</head>
+<body onload="document.form.reset();document.form.titulo.focus();">
+<center>
+<div id="principal">
+    <div id="header">
+        <?php include("header.phtml"); ?>
+    </div>
+    <div id="contenedor_medio">
+        <?php include("menu_usuario.phtml"); ?>
+        <br><br><br>
+        <h2>Vuelve a subir otro archivo</h2>
+        <form name="form" action="" method="post" enctype="multipart/form-data">
+        <?php
+        if(isset($_GET["m"]))
+        {
+            switch($_GET["m"])
+            {
+                case '1':
+                ?>
+                <h2 style="color:green;"> Se subio el archivo con éxito </h2>
+                <?php
+                break;
+
+                case '2':
+                ?>
+                <h2 style="color:red;"> El archivo no debe exceder los 6 Mb de capacidad. </h2>
+                <?php
+                break;
+
+                case '3':
+                ?>
+                <h2 style="color:red;">  Solo puede subir archivos txt, doc, docx, ppt, pptx y pdf. </h2>
+                <?php
+                break;
+
+                case '4':
+                ?>
+                <h2 style="color:red;">  Selecciona un archivo a subir. </h2>
+                <?php
+                break;
+            }
+        }
+        ?>
+        <table align="center" width="550">
+        <td valign="middle" align="center" colspan="2" width="400">
+        </td>
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="top" align="right" width="200">
+        Subir:
+        </td>
+        <td valign="top" align="left" width="200">
+		<input type="file" name="archivo" /> (Solo archivos doc, docx, pdf, ppt, pptx, txt)
+        <br />
+        Archivo Actual:
+        <a href="<?php echo Conectar::ruta()?>archivos/<?php echo $arch[0]["archivo"];?>" title="<?php echo $arch[0]["titulo"];?>" target="_blank"><?php echo $arch[0]["archivo"];?></a>
+        <br />
+        (El archivo no debe exceder los 6 MB de capacidad.)
+        </td>
+        </tr>
+
+        <tr>
+        <td valign="middle" align="center" colspan="2" width="400">
+        <hr />
+        <input type="hidden" name="grabar" value="si" />
+        <input type="hidden" name="id_archivo" value="<?php echo $_GET["id_archivo"]?>" />
+        <input type="button" value="Subir archivo" title="Subir archivo" onclick="document.form.submit();" />
+
+        </td>
+        </tr>
+        </table>
+        </form>
+    </div>  <!--Fin div contenedor_medio-->
+    <div id="reloj">
+        <?php include("reloj.phtml"); ?>
+    </div>
+    <div id="sidebar">
+        <?php include("perfilgral.phtml"); ?>
+    </div>
+    <div id="footer">
+    <hr />
+    &copy; Universidad Mayor de San Sim&oacuten - Entornos Virtuales  - <?php echo date("Y");?>
+    </div>
+</div> <!--Fin div Principal-->
+</center>
+</body>
+</html>

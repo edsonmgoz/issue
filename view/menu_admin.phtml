@@ -1,0 +1,75 @@
+<?php
+if(isset($_GET["accion"]) and $_GET["accion"] == "administrador")
+{
+ ?>
+<div id='cssmenu'>
+<ul>
+   <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=administrador" title="Inicio"><span>Inicio</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=perfil" title="Perfil Administrador"><span>Perfil Administrador</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=verusuario" title="Ver Usuarios"><span>Ver Usuarios</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos"><span>Juegos</span></a></li>
+   <li class='last'><a href="<?php echo Conectar::ruta();?>?accion=salir" title="Cerrar sesión"><span>Cerrar Sesión</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and ($_GET["accion"] == "perfil" or $_GET["accion"] == "editperfil" or $_GET["accion"] == "cambiarpass" or $_GET["accion"] == "cambiarfoto"))
+{
+?>
+<div id='cssmenu'>
+<ul>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=administrador" title="Inicio"><span>Inicio</span></a></li>
+   <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=perfil" title="Perfil Administrador"><span>Perfil Administrador</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=verusuario" title="Ver Usuarios"><span>Ver Usuarios</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos"><span>Juegos</span></a></li>
+   <li class='last'><a href="<?php echo Conectar::ruta();?>?accion=salir" title="Cerrar sesión"><span>Cerrar Sesión</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and ($_GET["accion"] == "verusuario" or $_GET["accion"] == "archivosubidos"))
+{
+?>
+<div id='cssmenu'>
+<ul>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=administrador" title="Inicio"><span>Inicio</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=perfil" title="Perfil Administrador"><span>Perfil Administrador</span></a></li>
+   <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=verusuario" title="Ver Usuarios"><span>Ver Usuarios</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos"><span>Juegos</span></a></li>
+   <li class='last'><a href="<?php echo Conectar::ruta();?>?accion=salir" title="Cerrar sesión"><span>Cerrar Sesión</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and ($_GET["accion"] == "buscararchivo" or $_GET["accion"] == "buscar"))
+{
+?>
+<div id='cssmenu'>
+<ul>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=administrador" title="Inicio"><span>Inicio</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=perfil" title="Perfil Administrador"><span>Perfil Administrador</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=verusuario" title="Ver Usuarios"><span>Ver Usuarios</span></a></li>
+   <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos"><span>Juegos</span></a></li>
+   <li class='last'><a href="<?php echo Conectar::ruta();?>?accion=salir" title="Cerrar sesión"><span>Cerrar Sesión</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and $_GET["accion"] == "juegos")
+{
+?>
+<div id='cssmenu'>
+<ul>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=administrador" title="Inicio"><span>Inicio</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=perfil" title="Perfil Administrador"><span>Perfil Administrador</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=verusuario" title="Ver Usuarios"><span>Ver Usuarios</span></a></li>
+   <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+   <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos"><span>Juegos</span></a></li>
+   <li class='last'><a href="<?php echo Conectar::ruta();?>?accion=salir" title="Cerrar sesión"><span>Cerrar Sesión</span></a></li>
+</ul>
+</div>
+<?php } ?>

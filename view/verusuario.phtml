@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>. . : : || I S S U E || : : . .</title>
+<link href="<?php echo Conectar::ruta();?>css/estilos.css" type="text/css" rel="stylesheet"/>
+<script language="javascript" type="text/javascript" src="<?php echo Conectar::ruta();?>js/funciones.js"></script>
+<style type="text/css">
+    <!--
+    .Estilo1 {font-family:"Arial"; font-size:13px; color: green;}
+    .Estilo2 {font-family:"Arial"; font-size:13px; color: red;}
+    -->
+</style>
+</head>
+<body>
+<center>
+<div id="principal">
+    <div id="header">
+        <?php include("header.phtml"); ?>
+    </div>
+    <div id="contenedor_medio">
+        <?php include("menu_admin.phtml"); ?>
+		<h2>Usuarios registrados actualmente</h2>
+       	<div id="contenedor_mis_archivos">
+        <div class="barra_deslizante_mis_archivos">
+        <?php
+        if(empty($usuario))
+        {
+        ?>
+            <h2 style="color:white;"> Ningun usuario encontrado </h2>
+        <?php
+        }
+        else
+        {
+            $inc=1;
+            $sql=0;
+            do {
+                ?>
+
+                <table align="center" width="805">
+
+                <tr style="background-color:#8080FF; color:#000000; font-weight:bold">
+
+                <td valign="middle" align="center" width="55" height="30"  >
+                Nro</td>
+
+                <td valign="middle" align="center" width="200" height="30" >
+                Nombre Completo</td>
+
+                <td valign="middle" align="center" width="150" height="30" >
+                Login</td>
+
+                <td valign="middle" align="center" width="100" height="30">
+                Fecha de registro</td>
+
+                <td valign="middle" align="center" width="50" height="30">
+                Archivos Subidos</td>
+
+                <td valign="middle" align="center" width="100" height="30">
+                Estado</td>
+
+                <td valign="middle" align="center" width="150" height="30">
+                Cambiar estado</td>
+                </tr>
+                <?php
+                for($i=0;$i<count($usuario);$i++)
+                {
+                ?>
+                    <tr id="<?php echo "tr_$i";?>" style="background-color:#f0f0f0" onMouseMove="tr('<?php echo "tr_$i";?>','#cccccc');" onMouseOut="tr('<?php echo "tr_$i";?>','#f0f0f0');">
+
+                    <td valign="middle" align="center" height="30">
+                    <?php
+                    echo $inc++;
+                    ?></td>
+
+                    <td valign="middle" align="center" height="30">
+                    <?php
+                    echo $usuario[$i]["nombre_usuario"];
+                    ?></td>
+
+                    <td valign="middle" align="center" height="30">
+                    <?php
+                    echo $usuario[$i]["login"];
+                    ?></td>
+
+                    <td valign="middle" align="center" height="30">
+                    <?php
+                    echo $usuario[$i]["fecha_usuario"];
+                    ?>
+                    </td>
+
+                    <td valign="middle" align="center" height="30">
+                    <a href="<?php echo Conectar::ruta();?>?accion=archivosubidos&id_usuario=<?php echo $usuario[$i]["id_usuario"];?>" title="Archivos subidos del usuario <?php echo $usuario[$i]["nombre_usuario"];?>"><img src="<?php echo Conectar::ruta();?>images/verarchivos.png" border="0" width="32" height="32" /></a>
+                    </td>
+
+                    <td valign="middle" align="center" height="30">
+                    <?php
+                    $est=$usuario[$i]['estado'];
+                        if($est == "habilitado")
+                        {
+                            ?>
+                            <span class="Estilo1"><strong>
+                            <?php
+                            echo "Habilitado";
+                            ?>
+                            </strong></span> <?php
+                        }
+                        elseif($est == "deshabilitado")
+                        {
+                            ?>
+                            <span class="Estilo2"><strong>
+                            <?php
+                            echo "Deshabilitado";
+                            ?>
+                            </strong></span> <?php
+                        }
+                    ?>
+                    </td>
+
+                    <td valign="middle" align="center" height="30">
+                    <?php
+                        if($est == "habilitado")
+                        {
+                            $nuevo_estado='deshabilitado';
+                            ?>
+                            <a href="#" title="Deshabilitar al usuario <?php echo $usuario[$i]["nombre_usuario"];?>" onclick="deshabilitar('<?php echo Conectar::ruta();?>?accion=cambiarestado&id_usuario=<?php echo $usuario[$i]["id_usuario"];?>&bandera=<?php echo $nuevo_estado ?>')">Deshabilitar Usuario</a>
+                            <?php
+                        }
+                        elseif($est == "deshabilitado")
+                        {
+                            $nuevo_estado='habilitado';
+                            ?>
+                            <a href="#" title="Habilitar al usuario <?php echo $usuario[$i]["nombre_usuario"];?>" onclick="habilitar('<?php echo Conectar::ruta();?>?accion=cambiarestado&id_usuario=<?php echo $usuario[$i]["id_usuario"];?>&bandera=<?php echo $nuevo_estado ?>')">Habilitar Usuario</a>
+                            <?php
+                        }
+                    ?>
+                   	</td>
+                    </tr>
+                <?php
+                }
+                ?>
+                </table>
+            <?php
+            } while($sql);//Fin do-while
+        }
+        ?>
+        </div><!--Fin class barra_deslizante_mis_archivos-->
+        </div> <!--fin contenedor_mis_archivos-->
+    </div>  <!--Fin div contenedor_medio-->
+    <div id="reloj">
+        <?php include("reloj.phtml"); ?>
+    </div>
+    <div id="sidebar">
+        <?php include("perfilgral.phtml"); ?>
+    </div>
+    <div id="footer">
+    <hr />
+    &copy; Universidad Mayor de San Sim&oacuten - Entornos Virtuales  - <?php echo date("Y");?>
+    </div>
+</div> <!--Fin div Principal-->
+</center>
+</body>
+</html>

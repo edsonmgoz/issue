@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>. . : : || I S S U E || : : . .</title>
+<link href="<?php echo Conectar::ruta();?>css/estilos.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<center>
+<div id="principal">
+    <div id="header">
+        <?php include("header.phtml"); ?>
+    </div>
+    <div id="contenedor_medio">
+        <?php
+        if(isset($_SESSION["privilegio"]) and $_SESSION["privilegio"] == 'usuario')
+        {
+            include("menu_usuario.phtml");
+        }
+        else if(isset($_SESSION["privilegio"]) and $_SESSION["privilegio"] == 'administrador')
+        {
+            include("menu_admin.phtml");
+        }
+        ?>
+        <h2>Cambiar foto de perfil</h2>
+        <form name="form" action="" method="post" enctype="multipart/form-data">
+        <?php
+        if(isset($_GET["m"]))
+        {
+            switch($_GET["m"])
+            {
+                case '1':
+                ?>
+                <h3 style="color:green;"> Se cambio la foto de perfil con éxito </h3>
+                <?php
+                break;
+
+                case '2':
+                ?>
+                <h3 style="color:red;"> La foto no debe exceder los 2 Mb de capacidad. </h3>
+                <?php
+                break;
+
+                case '3':
+                ?>
+                <h3 style="color:red;">  Solo formato jpeg. </h3>
+                <?php
+                break;
+
+                case '4':
+                ?>
+                <h3 style="color:red;">  Selecciona una foto a subir. </h3>
+                <?php
+                break;
+            }
+        }
+        ?>
+        Foto Actual: <br>
+        <?php
+        if($perfilgral[0]["foto"]=="default.jpg")
+        {
+        ?>
+            <img src="<?php echo Conectar::ruta()?>images/default.jpg" title="Foto de perfil de <?php echo $perfilgral[0]["nombre_usuario"];?>" width="200" height="200" />
+        <?php
+        }
+        else
+        {
+        ?>
+            <img src="<?php echo Conectar::ruta()?>pics/<?php echo $perfilgral[0]["foto"];?>" title="Foto de perfil de <?php echo $perfilgral[0]["nombre_usuario"];?>" width="200" height="200" />
+        <?php } ?>
+        <br />
+        <table align="center" width="550">
+        <td valign="middle" align="center" colspan="2" width="400">
+        </td>
+
+        <tr style="background-color:#FCAE4F">
+        <td valign="middle" align="right" width="200">
+        <strong>Subir foto:</strong> (Solo JPG)
+        </td>
+        <td valign="middle" align="left" width="200">
+		<input type="file" name="foto" />
+        </td>
+        </tr>
+
+        <tr>
+        <td valign="middle" align="center" colspan="2" width="400">
+        <hr />
+        <input type="hidden" name="grabar" value="si" />
+        <input type="hidden" name="id_usuario" value="<?php echo $_GET["id_usuario"]?>" />
+        <input type="button" value="Subir foto" title="Subir foto" onclick="document.form.submit();" />
+        </td>
+        </tr>
+        </table>
+        </form>
+        </div>  <!--Fin div contenedor_medio-->
+        <div id="reloj">
+            <?php include("reloj.phtml"); ?>
+        </div>
+        <div id="sidebar">
+            <?php include("perfilgral.phtml"); ?>
+        </div>
+        <div id="footer">
+        <hr />
+        &copy; Universidad Mayor de San Sim&oacuten - Entornos Virtuales  - <?php echo date("Y");?>
+        </div>
+</div> <!--Fin div Principal-->
+</center>
+</body>
+</html>

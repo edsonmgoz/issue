@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>. . : : || I S S U E || : : . .</title>
+<link href="<?php echo Conectar::ruta();?>css/estilos.css" type="text/css" rel="stylesheet"/>
+<script language="javascript" type="text/javascript" src="<?php echo Conectar::ruta();?>js/funciones.js"></script>
+</head>
+<body>
+<center>
+<div id="principal">
+    <div id="header">
+        <?php include("header.phtml"); ?>
+    </div>
+    <div id="contenedor_medio">
+        <?php
+            include("menu_admin.phtml");
+            if(isset($_GET["m"]))
+            {
+                switch($_GET["m"])
+                {
+                    case '1':
+                    ?>
+                    <h2 style="color: green">Se eliminó el registro exitosamente</h2>
+                    <?php
+                    break;
+
+                    case '2':
+                    ?>
+                    <h2 style="color: red">Se intentó eliminar el registro de forma errónea</h2>
+                    <?php
+                    break;
+                }
+            }
+        ?>
+
+		<h2>Archivos subidos</h2>
+      	<div id="contenedor_mis_archivos">
+            <div class="barra_deslizante_mis_archivos">
+                <?php
+                if(empty($suarchivo))
+                {
+                ?>
+                    <h2 style="color:white;"> El usuario aún no subio archivos </h2>
+                <?php
+                }
+                else
+                {
+                    $inc=1;
+                    $sql=0;
+                    do {
+                ?>
+                        <table align="center" width="805">
+                        <tr style="background-color:#0080FF; color:#000000; font-weight:bold">
+                        <td valign="middle" align="center" width="50" height="30"  >
+                        Nro</td>
+
+                        <td valign="middle" align="center" width="200" height="30" >
+                        Título</td>
+
+                        <td valign="middle" align="center" width="155" height="30" >
+                        Categoria</td>
+
+                        <td valign="middle" align="center" width="230" height="30">
+                        Descripción</td>
+
+                        <td valign="middle" align="center" width="70" height="30">
+                        Fecha de subida</td>
+
+                        <td valign="middle" align="center" width="50" height="30">
+                        Descarga</td>
+
+                        <td valign="middle" align="center" width="50" height="30">
+                        Eliminar archivo</td>
+                        </tr>
+                        <?php
+                        for($i=0;$i<count($suarchivo);$i++)
+                        {
+                        ?>
+                            <tr id="<?php echo "tr_$i";?>" style="background-color:#f0f0f0" onMouseMove="tr('<?php echo "tr_$i";?>','#cccccc');" onMouseOut="tr('<?php echo "tr_$i";?>','#f0f0f0');">
+
+                            <td valign="middle" align="center" height="30">
+                            <?php
+                                echo $inc++;
+                            ?></td>
+
+                            <td valign="middle" align="center" height="30">
+                            <?php
+                                echo $suarchivo[$i]["titulo"];
+                            ?></td>
+
+                            <td valign="middle" align="center" height="30">
+                            <?php
+                                echo $suarchivo[$i]["categoria"];
+                            ?></td>
+
+                            <td valign="middle" align="center" height="30">
+                            <?php
+                                echo $suarchivo[$i]["descripcion"];
+                            ?>
+                            </td>
+
+                            <td valign="middle" align="center" height="30">
+                            <?php
+                                echo $suarchivo[$i]["fecha_archivo"];
+                            ?>
+                            </td>
+
+                            <td valign="middle" align="center" height="30">
+                            <a href="<?php echo Conectar::ruta()?>archivos/<?php echo $suarchivo[$i]["archivo"];?>" title="Abrir/Descargar <?php echo $suarchivo[$i]["titulo"];?>" target="_blank"><img src="<?php echo Conectar::ruta();?>images/descargar.png" border="0" width="32" height="32" /></a>
+                            </td>
+
+                            <td valign="middle" align="center" height="30">
+                            <a href="#" title="Eliminar <?php echo $suarchivo[$i]["titulo"];?>" onclick="eliminar('<?php echo Conectar::ruta();?>?accion=deletesuarchivo&id_archivo=<?php echo $suarchivo[$i]["id_archivo"];?>&id_usuario=<?php echo $suarchivo[$i]["id_usuario"];?>')"><img src="<?php echo Conectar::ruta();?>images/eliminar.png" border="0" width="32" height="32" /></a>
+                            </td>
+                            </tr>
+                            <?php
+                            }
+                            ?>
+                            </table>
+                            <?php
+                    } while($sql);
+                }
+            ?>
+            </div><!--Fin class barra_deslizante_mis_archivos-->
+        </div> <!--fin contenedor_mis_archivos-->
+    </div>  <!--Fin div contenedor_medio-->
+    <div id="reloj">
+        <?php include("reloj.phtml"); ?>
+    </div>
+    <div id="sidebar">
+        <?php include("perfilgral.phtml"); ?>
+    </div>
+    <div id="footer">
+    <hr />
+        &copy; Universidad Mayor de San Sim&oacuten - Entornos Virtuales  - <?php echo date("Y");?>
+    </div>
+</div> <!--Fin div Principal-->
+</center>
+</body>
+</html>

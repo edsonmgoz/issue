@@ -1,0 +1,20 @@
+<?php
+if($perfilgral[0]["foto"]=="default.jpg")
+{
+?>
+	<img src="<?php echo Conectar::ruta()?>images/default.jpg" title="Foto de perfil de <?php echo $perfilgral[0]["nombre_usuario"];?>" width="200" height="200" />
+<?php
+}
+else
+{
+?>
+	<img src="<?php echo Conectar::ruta()?>pics/<?php echo $perfilgral[0]["foto"];?>" title="Foto de perfil de <?php echo $perfilgral[0]["nombre_usuario"];?>" width="200" height="200" />
+<?php } ?>
+<br>
+<strong>Nombre: </strong>
+<?php echo $perfilgral[0]["nombre_usuario"]; ?>
+<br>
+<strong>Usuario: </strong>
+<?php echo $perfilgral[0]["login"]; ?>
+<br><br>
+<a href="<?php echo Conectar::ruta();?>?accion=cambiarfoto&id_usuario=<?php echo $perfilgral[0]["id_usuario"];?>" title="Cambiar foto de perfil de <?php echo $perfilgral[0]["nombre_usuario"];?>">Cambiar foto de perfil</a>

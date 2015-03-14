@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>. . : : || I S S U E || : : . .</title>
+<link href="<?php echo Conectar::ruta();?>css/estilos.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="<?php echo Conectar::ruta();?>css/tooltipster.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo Conectar::ruta();?>css/style2.css" />
+<script type="text/javascript" src="<?php echo Conectar::ruta();?>js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="<?php echo Conectar::ruta();?>js/jquery.tooltipster.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.tooltip').tooltipster();
+    });
+</script>
+</head>
+<body>
+<center>
+<div id="principal">
+    <div id="header">
+        <?php include("header_audio.phtml"); ?>
+    </div>
+    <div id="contenedor_medio">
+        <?php
+            include("menu_principal.phtml");
+    	    include("acerca.phtml");
+        ?>
+    </div>  <!--Fin div contenedor_medio-->
+    <div id="reloj">
+        <?php include("reloj.phtml"); ?>
+    </div>
+    <div id="sidebar">
+        <?php include("social.phtml"); ?>
+    </div>
+    <div id="footer">
+    <hr />
+    &copy; Universidad Mayor de San Sim&oacuten - Entornos Virtuales  - <?php echo date("Y");?>
+    </div>
+</div> <!--Fin div Principal-->
+</center>
+</body>
+</html>

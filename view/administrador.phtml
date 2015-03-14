@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>. . : : || I S S U E || : : . .</title>
+<link href="<?php echo Conectar::ruta();?>css/estilos.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<center>
+<div id="principal">
+    <div id="header">
+        <?php include("header.phtml"); ?>
+    </div>
+    <div id="contenedor_medio">
+        <?php include("menu_admin.phtml"); ?>
+        <br>
+	    <?php
+		if(isset($_SESSION["ses_id"]) and isset($_SESSION["privilegio"]) and $_SESSION["privilegio"]='administrador')
+		{
+			echo "..::<strong style='font-size:16px'> Bienvenid@ Administrador: ".$usu[0]["nombre_usuario"]."</strong>::..";
+		}
+        ?>
+    <div id="intro_usuario">
+        <?php include("intro_admin.phtml"); ?>
+    </div>
+    </div>  <!--Fin div contenedor_medio-->
+    <div id="reloj">
+        <?php include("reloj.phtml"); ?>
+    </div>
+    <div id="sidebar">
+        <?php include("perfilgral.phtml"); ?>
+    </div>
+    <div id="footer">
+    <hr />
+    &copy; Universidad Mayor de San Sim&oacuten - Entornos Virtuales  - <?php echo date("Y");?>
+    </div>
+</div> <!--Fin div Principal-->
+</center>
+</body>
+</html>

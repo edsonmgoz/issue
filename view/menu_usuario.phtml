@@ -1,0 +1,96 @@
+<?php
+if(isset($_GET["accion"]) and $_GET["accion"] == "usuario")
+{
+ ?>
+<div id='cssmenu'>
+<ul>
+    <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=usuario" title="Inicio"><span>Inicio</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=perfil" title="Perfil Usuario"><span>Perfil</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=subir" title="Sube tu archivo"><span>Sube tu archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=misarchivos" title="Mis Archivos"><span>Mis Archivos</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos">Juegos</a></li>
+	<li class='last'><a href="<?php echo Conectar::ruta();?>?accion=salir" title="Cerrar Sesión"><span>Cerrar Sesi&oacuten</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and ($_GET["accion"] == "perfil" or $_GET["accion"] == "editperfil" or $_GET["accion"] == "cambiarpass" or $_GET["accion"] == "cambiarfoto"))
+{
+?>
+<div id='cssmenu'>
+<ul>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=usuario" title="Inicio"><span>Inicio</span></a></li>
+    <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=perfil" title="Perfil Usuario"><span>Perfil</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=subir" title="Sube tu archivo"><span>Sube tu archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=misarchivos" title="Mis Archivos"><span>Mis Archivos</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos">Juegos</a></li>
+	<li class='last'><a href="<?php echo Conectar::ruta();?>?accion=salir" title="Cerrar Sesión"><span>Cerrar Sesi&oacuten</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and $_GET["accion"] == "subir")
+{
+?>
+<div id='cssmenu'>
+<ul>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=usuario" title="Inicio"><span>Inicio</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=perfil" title="Perfil Usuario"><span>Perfil</span></a></li>
+    <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=subir" title="Sube tu archivo"><span>Sube tu archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=misarchivos" title="Mis Archivos"><span>Mis Archivos</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos">Juegos</a></li>
+	<li class='last'><a href="<?php echo Conectar::ruta();?>?accion=salir" title="Cerrar Sesión"><span>Cerrar Sesi&oacuten</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and ($_GET["accion"] == "misarchivos" or $_GET["accion"] == "editarchivo" or $_GET["accion"] == "volverasubir"))
+{
+?>
+<div id='cssmenu'>
+<ul>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=usuario" title="Inicio"><span>Inicio</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=perfil" title="Perfil Usuario"><span>Perfil</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=subir" title="Sube tu archivo"><span>Sube tu archivo</span></a></li>
+    <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=misarchivos" title="Mis Archivos"><span>Mis Archivos</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos">Juegos</a></li>
+	<li class='last'><a href="<?php echo Conectar::ruta();?>?accion=salir" title="Cerrar Sesión"><span>Cerrar Sesi&oacuten</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and ($_GET["accion"] == "buscararchivo" or $_GET["accion"] == "buscar"))
+{
+?>
+<div id='cssmenu'>
+<ul>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=usuario" title="Inicio"><span>Inicio</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=perfil" title="Perfil Usuario"><span>Perfil</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=subir" title="Sube tu archivo"><span>Sube tu archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=misarchivos" title="Mis Archivos"><span>Mis Archivos</span></a></li>
+    <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos">Juegos</a></li>
+	<li class='last'><a href="<?php echo Conectar::ruta();?>?accion=salir" title="Cerrar Sesión"><span>Cerrar Sesi&oacuten</span></a></li>
+</ul>
+</div>
+<?php
+}
+elseif(isset($_GET["accion"]) and $_GET["accion"] == "juegos")
+{
+?>
+<div id='cssmenu'>
+<ul>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=usuario" title="Inicio"><span>Inicio</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=perfil" title="Perfil Usuario"><span>Perfil</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=subir" title="Sube tu archivo"><span>Sube tu archivo</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=misarchivos" title="Mis Archivos"><span>Mis Archivos</span></a></li>
+    <li><a href="<?php echo Conectar::ruta();?>?accion=buscararchivo" title="Buscar Archivo"><span>Buscar Archivo</span></a></li>
+    <li class='active'><a href="<?php echo Conectar::ruta();?>?accion=juegos" title="Juegos">Juegos</a></li>
+	<li class='last'><a href="<?php echo Conectar::ruta();?>?accion=salir" title="Cerrar Sesión"><span>Cerrar Sesi&oacuten</span></a></li>
+</ul>
+</div>
+<?php } ?>
